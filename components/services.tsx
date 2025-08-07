@@ -26,11 +26,6 @@ const services = [
 export default function Services() {
   return (
     <section id="services" className="py-16 md:py-24 bg-gray-950 relative overflow-hidden">
-      <div 
-        aria-hidden="true" 
-        className="absolute inset-0 bg-gradient-to-br from-gray-900 via-gray-950 to-black opacity-50"
-      />
-      <div className="absolute inset-x-0 top-0 h-[500px] w-full -translate-y-1/2 scale-150 bg-orange-400/10 [mask-image:radial-gradient(closest-side,white,transparent)]" />
       
       <div className="container mx-auto px-4 md:px-6 relative">
         <div className="text-center mb-12 md:mb-16">
@@ -56,7 +51,6 @@ export default function Services() {
                   style={{ objectFit: 'cover' }}
                   className="transition-transform duration-500 ease-in-out group-hover:scale-105"
                 />
-                <div className="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent" />
               </div>
               <div className="p-5">
                 <h3 className="text-xl font-bold text-white">{service.title}</h3>
