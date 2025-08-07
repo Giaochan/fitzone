@@ -1,0 +1,482 @@
+'use client';
+
+import { useState } from 'react';
+import { Button } from '@/components/ui/button';
+import { Sheet, SheetContent, SheetHeader, SheetTrigger } from '@/components/ui/sheet';
+import { Dumbbell, Menu } from 'lucide-react';
+
+const navLinks = [
+  { href: '#services', label: 'Servicios' },
+  { href: '#schedule', label: 'Horarios' },
+  { href: '#testimonials', label: 'Testimonios' },
+];
+
+export default function Header() {
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
+
+  return (
+    <header className="sticky top-0 z-50 w-full border-b border-gray-800 bg-gray-950/80 backdrop-blur-lg">
+      <div className="container mx-auto flex h-16 items-center justify-between px-4 md:px-6">
+        <a href="#" className="flex items-center gap-2">
+          <Dumbbell className="h-6 w-6 text-orange-400" />
+          <span className="text-xl font-bold tracking-tight">FitZone</span>
+        </a>
+        <nav className="hidden md:flex items-center gap-6">
+          {navLinks.map((link) => (
+            <a
+              key={link.href}
+              href={link.href}
+              className="text-sm font-medium text-gray-300 transition-colors hover:text-orange-400"
+            >
+              {link.label}
+            </a>
+          ))}
+        </nav>
+        <div className="hidden md:block">
+          <Button className="bg-orange-400 text-gray-950 font-bold hover:bg-orange-500">
+            ¡Únete Ahora!
+          </Button>
+        </div>
+        <div className="md:hidden">
+          <Sheet open={isMenuOpen} onOpenChange={setIsMenuOpen}>
+            <SheetTrigger asChild>
+              <Button variant="ghost" size="icon">
+                <Menu className="h-6 w-6" />
+                <span className="sr-only">{'Abrir menú'}</span>
+              </Button>
+            </SheetTrigger>
+            <SheetContent
+              side="right"
+              className="bg-gray-950 border-l-gray-800 text-white flex h-full flex-col p-6"
+            >
+              <SheetHeader>
+                <a
+                  href="#"
+                  className="flex items-center gap-2 mb-8"
+                  onClick={() => setIsMenuOpen(false)}
+                >
+                  <Dumbbell className="h-6 w-6 text-orange-400" />
+                  <span className="text-xl font-bold tracking-tight">FitZone</span>
+                </a>
+              </SheetHeader>
+              <div className="flex-grow">
+                <nav className="flex flex-col gap-6">
+                  {navLinks.map((link) => (
+                    <a
+                      key={link.href}
+                      href={link.href}
+                      className="text-lg font-medium text-gray-300 transition-colors hover:text-orange-400"
+                      onClick={() => setIsMenuOpen(false)}
+                    >
+                      {link.label}
+                    </a>
+                  ))}
+                </nav>
+              </div>
+              <Button className="w-full bg-orange-400 text-gray-950 font-bold hover:bg-orange-500">
+                ¡Únete Ahora!
+              </Button>
+            </SheetContent>
+          </Sheet>
+        </div>
+      </div>
+    </header>
+  );
+}
+
+import { Button } from '@/components/ui/button';
+
+export default function Hero() {
+  return (
+    <section className="relative h-[70vh] min-h-[500px] md:h-[80vh] flex items-center justify-center text-center">
+      <div className="absolute inset-0 bg-black/60 z-10" />
+      <img
+        src="/hero-battle-ropes.jpg"
+        alt="Hombre y mujer entrenando con cuerdas de batalla en FitZone"
+        className="absolute inset-0 w-full h-full object-cover"
+      />
+      <div className="relative z-20 container mx-auto px-4 md:px-6 max-w-3xl">
+        <h1 className="text-4xl font-extrabold tracking-tighter sm:text-5xl md:text-6xl lg:text-7xl text-white">
+          {'Transforma tu cuerpo en '}
+          <span className="text-orange-400">{'FitZone'}</span>
+        </h1>
+        <p className="mt-4 text-lg text-gray-300 md:text-xl">
+          {'Alcanza tus metas de fitness con nuestros entrenadores expertos, equipos de última generación y un ambiente que te motiva a superarte.'}
+        </p>
+        <div className="mt-8">
+          <Button size="lg" className="bg-orange-400 text-gray-950 font-bold hover:bg-orange-500">
+            {'¡Obtén tu clase gratis!'}
+          </Button>
+        </div>
+      </div>
+    </section>
+  );
+}
+
+import { Dumbbell, HeartPulse, Users, Zap } from 'lucide-react';
+
+const services = [
+  {
+    icon: <Dumbbell className="h-6 w-6 text-orange-400" />,
+    title: 'Zona de Pesas Completa',
+    description:
+      'Equipamiento de vanguardia para que lleves tu entrenamiento de fuerza al siguiente nivel.',
+  },
+  {
+    icon: <HeartPulse className="h-6 w-6 text-orange-400" />,
+    title: 'Entrenadores Personales',
+    description:
+      'Nuestros coaches certificados diseñarán un plan a tu medida para que alcances tus objetivos.',
+  },
+  {
+    icon: <Users className="h-6 w-6 text-orange-400" />,
+    title: 'Clases Grupales',
+    description:
+      'Desde Yoga hasta HIIT, encuentra la clase perfecta para ti y entrena con la mejor energía.',
+  },
+  {
+    icon: <Zap className="h-6 w-6 text-orange-400" />,
+    title: 'Área de Cardio',
+    description:
+      'Cintas, elípticas y bicicletas de última generación para mejorar tu resistencia cardiovascular.',
+  },
+];
+
+export default function Services() {
+  return (
+    <section id="services" className="py-16 md:py-24 bg-gray-900">
+      <div className="container mx-auto px-4 md:px-6">
+        <div className="text-center mb-16">
+          <h2 className="text-3xl font-bold tracking-tighter sm:text-4xl">{'Nuestros Beneficios'}</h2>
+          <p className="mt-3 max-w-2xl mx-auto text-gray-400">
+            {'Todo lo que necesitas para una experiencia de fitness inigualable.'}
+          </p>
+        </div>
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-x-12 gap-y-10 max-w-4xl mx-auto">
+          {services.map((service, index) => (
+            <div key={index} className="flex items-start gap-5">
+              <div className="flex-shrink-0 rounded-xl bg-gray-800 p-4">{service.icon}</div>
+              <div>
+                <h3 className="text-xl font-bold text-white">{service.title}</h3>
+                <p className="mt-1 text-gray-400">{service.description}</p>
+              </div>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+  );
+}
+
+'use client';
+
+import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
+import { Badge } from '@/components/ui/badge';
+import { cn } from '@/lib/utils';
+
+const classTypeStyles = {
+  Fuerza: { badge: 'bg-red-500/10 text-red-400 border-red-500/20', color: 'bg-red-400' },
+  Cardio: { badge: 'bg-sky-500/10 text-sky-400 border-sky-500/20', color: 'bg-sky-400' },
+  Flexibilidad: { badge: 'bg-purple-500/10 text-purple-400 border-purple-500/20', color: 'bg-purple-400' },
+  Baile: { badge: 'bg-pink-500/10 text-pink-400 border-pink-500/20', color: 'bg-pink-400' },
+};
+
+type ClassInfo = { name: string; type: keyof typeof classTypeStyles; time: string };
+
+const schedule: Record<string, ClassInfo[]> = {
+  Lunes: [
+    { time: '08:00 AM', name: 'Yoga Flow', type: 'Flexibilidad' },
+    { time: '10:00 AM', name: 'Spinning', type: 'Cardio' },
+    { time: '05:00 PM', name: 'CrossFit', type: 'Fuerza' },
+    { time: '07:00 PM', name: 'HIIT', type: 'Cardio' },
+  ],
+  Martes: [
+    { time: '08:00 AM', name: 'HIIT', type: 'Cardio' },
+    { time: '10:00 AM', name: 'Boxeo', type: 'Cardio' },
+    { time: '05:00 PM', name: 'Pilates', type: 'Flexibilidad' },
+    { time: '07:00 PM', name: 'Zumba', type: 'Baile' },
+  ],
+  Miércoles: [
+    { time: '08:00 AM', name: 'Yoga Flow', type: 'Flexibilidad' },
+    { time: '10:00 AM', name: 'Spinning', type: 'Cardio' },
+    { time: '05:00 PM', name: 'CrossFit', type: 'Fuerza' },
+    { time: '07:00 PM', name: 'HIIT', type: 'Cardio' },
+  ],
+  Jueves: [
+    { time: '08:00 AM', name: 'HIIT', type: 'Cardio' },
+    { time: '10:00 AM', name: 'Boxeo', type: 'Cardio' },
+    { time: '05:00 PM', name: 'Pilates', type: 'Flexibilidad' },
+    { time: '07:00 PM', name: 'Zumba', type: 'Baile' },
+  ],
+  Viernes: [
+    { time: '08:00 AM', name: 'Yoga Flow', type: 'Flexibilidad' },
+    { time: '10:00 AM', name: 'Spinning', type: 'Cardio' },
+    { time: '05:00 PM', name: 'CrossFit', type: 'Fuerza' },
+    { time: '07:00 PM', name: 'HIIT', type: 'Cardio' },
+  ],
+  Sábado: [
+    { time: '09:00 AM', name: 'Full Body', type: 'Fuerza' },
+    { time: '11:00 AM', name: 'Zumba', type: 'Baile' },
+    { time: '01:00 PM', name: 'Yoga Relax', type: 'Flexibilidad' },
+  ],
+};
+
+const ClassInfoCard = ({ classInfo }: { classInfo: ClassInfo }) => {
+  const { name, type, time } = classInfo;
+  return (
+    <div className="group relative overflow-hidden rounded-2xl p-[1px] bg-gradient-to-r from-orange-400/20 via-amber-400/10 to-transparent transition-colors hover:from-orange-400/35 hover:via-amber-400/20">
+      <div className="flex items-center gap-4 rounded-2xl bg-gray-900/90 p-4 border border-gray-800/70 backdrop-blur-sm transition-all duration-300 hover:border-orange-500/30 hover:bg-gray-900">
+        <div className={cn('w-1.5 h-10 rounded-full', classTypeStyles[type].color)} />
+        <div className="flex-1">
+          <p className="text-white font-semibold text-base sm:text-lg">{name}</p>
+          <div className="mt-1 flex items-center gap-2">
+            <span className="inline-flex items-center rounded-full bg-gray-800 px-2 py-0.5 text-xs text-gray-300 ring-1 ring-gray-700">
+              {time}
+            </span>
+          </div>
+        </div>
+        <Badge variant="outline" className={cn('text-xs', classTypeStyles[type].badge)}>
+          {type}
+        </Badge>
+      </div>
+    </div>
+  );
+};
+
+export default function Schedule() {
+  const days = Object.keys(schedule);
+
+  return (
+    <section id="schedule" className="py-14 md:py-20 bg-gray-950">
+      <div className="container mx-auto max-w-4xl px-4 md:px-6">
+        <div className="text-center mb-8">
+          <h2 className="text-3xl font-bold tracking-tight sm:text-4xl">{'Horario de Clases'}</h2>
+          <p className="mt-2 max-w-2xl mx-auto text-gray-400 text-sm sm:text-base">
+            {'Elige un día para ver las sesiones disponibles.'}
+          </p>
+        </div>
+
+        <Tabs defaultValue={days[0]} className="w-full">
+          <TabsList className="mx-auto inline-flex flex-wrap items-center justify-center gap-2 bg-gray-900/50 border border-gray-800 rounded-lg p-1.5 text-center">
+            {days.map((day) => (
+              <TabsTrigger
+                key={day}
+                value={day}
+                className="px-3 py-2 text-sm font-medium text-gray-300 rounded-md data-[state=active]:bg-orange-400 data-[state=active]:text-gray-950"
+              >
+                {day}
+              </TabsTrigger>
+            ))}
+          </TabsList>
+
+          {days.map((day) => (
+            <TabsContent key={day} value={day} className="mt-6">
+              <div className="space-y-3">
+                {schedule[day as keyof typeof schedule].map((classInfo, index) => (
+                  <ClassInfoCard key={index} classInfo={classInfo} />
+                ))}
+              </div>
+            </TabsContent>
+          ))}
+        </Tabs>
+      </div>
+    </section>
+  );
+}
+
+import { Card, CardContent } from '@/components/ui/card';
+import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar';
+import { Carousel, CarouselContent, CarouselItem, CarouselNext, CarouselPrevious } from '@/components/ui/carousel';
+import { Quote } from 'lucide-react';
+
+const testimonialsData = [
+  { name: 'Ana García', avatar: 'AG', image: '/diverse-woman-smiling.png', quote: '¡FitZone cambió mi vida! Los entrenadores son increíbles y el ambiente es súper motivador. He logrado resultados que nunca pensé posibles.' },
+  { name: 'Carlos Vera', avatar: 'CV', image: '/smiling-man.png', quote: 'Las instalaciones son de primera. Siempre está limpio y el equipo es moderno. Las clases de CrossFit son intensas y muy divertidas.' },
+  { name: 'Sofía Rodriguez', avatar: 'SR', image: '/young-woman-portrait.png', quote: 'Me encanta la variedad de clases. Puedo hacer yoga un día y boxeo al siguiente. Es el lugar perfecto para no aburrirte de tu rutina.' },
+  { name: 'David Martinez', avatar: 'DM', image: '/smiling-man-portrait.png', quote: 'El ambiente es genial, todo el mundo te apoya. He hecho grandes amigos aquí además de ponerme en forma. Lo recomiendo 100%.' },
+  { name: 'Laura Jimenez', avatar: 'LJ', image: '/smiling-woman-portrait.png', quote: 'La app para reservar clases es súper fácil de usar. Nunca tengo problemas para encontrar un hueco. ¡Un 10 en organización!' },
+];
+
+export default function Testimonials() {
+  return (
+    <section id="testimonials" className="py-16 md:py-24 bg-gray-900">
+      <div className="container mx-auto px-4 md:px-6">
+        <div className="text-center mb-12">
+          <h2 className="text-3xl font-bold tracking-tighter sm:text-4xl">{'Lo que dicen nuestros miembros'}</h2>
+          <p className="mt-3 max-w-2xl mx-auto text-gray-400">
+            {'Historias reales de personas que han transformado sus vidas con nosotros.'}
+          </p>
+        </div>
+
+        <Carousel opts={{ align: 'start', loop: true }} className="w-full max-w-xs sm:max-w-xl md:max-w-3xl lg:max-w-5xl mx-auto">
+          <CarouselContent className="-ml-4">
+            {testimonialsData.map((testimonial, index) => (
+              <CarouselItem key={index} className="pl-4 md:basis-1/2 lg:basis-1/3">
+                <div className="p-1 h-full">
+                  <Card className="bg-gray-800/50 border-gray-700 text-white h-full flex flex-col justify-between">
+                    <CardContent className="p-6 flex-grow flex flex-col">
+                      <Quote className="h-8 w-8 text-orange-400 mb-4 flex-shrink-0" />
+                      <p className="text-gray-300 text-lg leading-relaxed flex-grow">{testimonial.quote}</p>
+                    </CardContent>
+                    <div className="bg-gray-800 p-4 flex items-center gap-4 border-t border-gray-700 flex-shrink-0">
+                      <Avatar className="h-12 w-12 border-2 border-orange-400/80">
+                        <AvatarImage src={testimonial.image || '/placeholder.svg'} alt={testimonial.name} className="object-cover" />
+                        <AvatarFallback>{testimonial.avatar}</AvatarFallback>
+                      </Avatar>
+                      <div>
+                        <p className="font-semibold text-white">{testimonial.name}</p>
+                      </div>
+                    </div>
+                  </Card>
+                </div>
+              </CarouselItem>
+            ))}
+          </CarouselContent>
+          <CarouselPrevious className="hidden sm:flex bg-gray-800 hover:bg-gray-700 text-white border-gray-600" />
+          <CarouselNext className="hidden sm:flex bg-gray-800 hover:bg-gray-700 text-white border-gray-600" />
+        </Carousel>
+      </div>
+    </section>
+  );
+}
+
+'use client';
+
+import { Button } from '@/components/ui/button';
+import { Input } from '@/components/ui/input';
+import { Label } from '@/components/ui/label';
+import { useToast } from '@/hooks/use-toast';
+import { useState } from 'react';
+import { Mail, User, ShieldCheck, Sparkles } from 'lucide-react';
+
+export default function Cta() {
+  const { toast } = useToast();
+  const [email, setEmail] = useState('');
+  const [name, setName] = useState('');
+
+  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+    if (!name || !email) {
+      toast({ title: 'Error', description: 'Por favor, completa ambos campos.', variant: 'destructive' });
+      return;
+    }
+    console.log({ name, email });
+    toast({ title: '¡Éxito!', description: 'Gracias por registrarte. Te contactaremos pronto.', className: 'bg-orange-500 text-white' });
+    setName('');
+    setEmail('');
+  };
+
+  return (
+    <section id="cta" className="py-16 md:py-24 bg-gray-950">
+      <div className="container mx-auto px-4 md:px-6">
+        <div className="max-w-3xl mx-auto text-center">
+          <span className="inline-flex items-center gap-2 rounded-full border border-orange-500/30 bg-orange-400/10 px-3 py-1 text-xs font-semibold tracking-wide text-orange-300">
+            <Sparkles className="h-3.5 w-3.5" />
+            {'Clase de prueba'}
+          </span>
+
+          <h2 className="mt-4 text-3xl font-bold tracking-tighter sm:text-4xl">
+            {'Consigue tu primera clase '}
+            <span className="text-orange-400">{'gratis'}</span>
+          </h2>
+
+          <p className="mt-2 text-base text-gray-400 sm:text-lg">
+            {'Déjanos tus datos y te contactamos para agendar tu sesión de bienvenida.'}
+          </p>
+
+          <form onSubmit={handleSubmit} className="mt-6 grid gap-3 sm:grid-cols-[1fr_1fr_auto] sm:items-center">
+            <div className="relative">
+              <Label htmlFor="name" className="sr-only">
+                {'Nombre'}
+              </Label>
+              <User className="pointer-events-none absolute left-3 top-1/2 h-4 w-4 -translate-y-1/2 text-gray-400" />
+              <Input
+                id="name"
+                type="text"
+                placeholder="Tu nombre"
+                className="bg-gray-800 border-gray-700 text-white pl-10 focus:ring-orange-400"
+                value={name}
+                onChange={(e) => setName(e.target.value)}
+                required
+                aria-label="Nombre"
+              />
+            </div>
+
+            <div className="relative">
+              <Label htmlFor="email" className="sr-only">
+                {'Correo electrónico'}
+              </Label>
+              <Mail className="pointer-events-none absolute left-3 top-1/2 h-4 w-4 -translate-y-1/2 text-gray-400" />
+              <Input
+                id="email"
+                type="email"
+                placeholder="Tu correo electrónico"
+                className="bg-gray-800 border-gray-700 text-white pl-10 focus:ring-orange-400"
+                value={email}
+                onChange={(e) => setEmail(e.target.value)}
+                required
+                aria-label="Correo electrónico"
+              />
+            </div>
+
+            <Button type="submit" className="h-11 w-full sm:w-auto bg-orange-400 text-gray-950 font-bold hover:bg-orange-500">
+              {'Registrarme'}
+            </Button>
+          </form>
+
+          <div className="mt-4 flex items-center justify-center gap-2 text-xs text-gray-400">
+            <ShieldCheck className="h-4 w-4 text-orange-400" />
+            <span>{'Sin spam. Cancelas cuando quieras. Respuesta en menos de 24h.'}</span>
+          </div>
+        </div>
+      </div>
+    </section>
+  );
+}
+
+import { Dumbbell, Facebook, Instagram, Twitter } from 'lucide-react';
+
+export default function Footer() {
+  return (
+    <footer className="bg-gray-900 border-t border-gray-800">
+      <div className="container mx-auto max-w-6xl px-4 md:px-6 py-10">
+        <div className="grid grid-cols-1 md:grid-cols-12 gap-8 md:gap-10">
+          <div className="flex flex-col items-start md:col-span-5">
+            <a href="#" className="flex items-center gap-2 mb-4">
+              <Dumbbell className="h-6 w-6 text-orange-400" />
+              <span className="text-xl font-bold tracking-tight">FitZone</span>
+            </a>
+            <p className="text-gray-400 text-sm">{'El mejor lugar para transformar tu cuerpo y mente.'}</p>
+          </div>
+
+          <div className="md:col-span-4">
+            <h3 className="font-semibold text-white mb-4">{'Contacto'}</h3>
+            <ul className="space-y-2 text-sm text-gray-400">
+              <li>{'Av. Siempre Viva 123, Springfield'}</li>
+              <li>{'contacto@fitzone.com'}</li>
+              <li>{'+1 (555) 123-4567'}</li>
+            </ul>
+          </div>
+
+          <div className="md:col-span-3 md:justify-self-end">
+            <h3 className="font-semibold text-white mb-4">{'Síguenos'}</h3>
+            <div className="flex items-center gap-4 justify-start md:justify-end">
+              <a href="#" className="text-gray-400 hover:text-orange-400" aria-label="Facebook">
+                <Facebook className="h-6 w-6" />
+              </a>
+              <a href="#" className="text-gray-400 hover:text-orange-400" aria-label="Instagram">
+                <Instagram className="h-6 w-6" />
+              </a>
+              <a href="#" className="text-gray-400 hover:text-orange-400" aria-label="Twitter">
+                <Twitter className="h-6 w-6" />
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div className="mt-8 border-t border-gray-800 pt-4 text-center text-sm text-gray-500">
+        <p>&copy; {new Date().getFullYear()} FitZone. {'Todos los derechos reservados.'}</p>
+      </div>
+    </footer>
+  );
+}

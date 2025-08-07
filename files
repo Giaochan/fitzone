@@ -1,0 +1,163 @@
+// components/header.tsx
+import React from 'react';
+import { Button } from 'antd';
+import { Dumbbell } from 'icons';
+
+const Header = () => {
+  return (
+    <div>
+      {/* Desktop CTA Button */}
+      <Button className="bg-orange-400 text-gray-950 font-bold hover:bg-orange-500">
+        Call to Action
+      </Button>
+      {/* Mobile CTA Button */}
+      <Button className="w-full bg-orange-400 text-gray-950 font-bold hover:bg-orange-500">
+        Mobile Call to Action
+      </Button>
+      {/* Brand/icon and nav hover colors */}
+      <Dumbbell className="h-6 w-6 text-orange-400" />
+      <nav className="text-sm font-medium text-gray-300 transition-colors hover:text-orange-400">
+        Navigation
+      </nav>
+    </div>
+  );
+};
+
+export default Header;
+
+// components/hero.tsx
+import React from 'react';
+import { Button } from 'antd';
+
+const Hero = () => {
+  return (
+    <div>
+      <h1>
+        Hero Title <span className="text-orange-400">Accent Color</span>
+      </h1>
+      {/* CTA Button */}
+      <Button size="lg" className="bg-orange-400 text-gray-950 font-bold hover:bg-orange-500">
+        Call to Action
+      </Button>
+    </div>
+  );
+};
+
+export default Hero;
+
+// components/services.tsx
+import React from 'react';
+import { Dumbbell, HeartPulse, Users, Zap } from 'icons';
+
+const Services = () => {
+  return (
+    <div>
+      <Dumbbell className="h-6 w-6 text-orange-400" />
+      <HeartPulse className="h-6 w-6 text-orange-400" />
+      <Users className="h-6 w-6 text-orange-400" />
+      <Zap className="h-6 w-6 text-orange-400" />
+    </div>
+  );
+};
+
+export default Services;
+
+// components/schedule.tsx
+import React from 'react';
+import { Tabs } from 'antd';
+import { Quote } from 'icons';
+
+const Schedule = () => {
+  return (
+    <div>
+      {/* Tabs active color */}
+      <Tabs>
+        <Tabs.TabPane tab="Tab 1" key="1">
+          Content 1
+        </Tabs.TabPane>
+        <Tabs.TabPane tab="Tab 2" key="2">
+          Content 2
+        </Tabs.TabPane>
+      </Tabs>
+      {/* ClassInfoCard accent gradient and border to orange tones */}
+      <div className="group relative overflow-hidden rounded-2xl p-[1px] bg-gradient-to-r from-orange-400/20 via-orange-300/10 to-transparent transition-colors hover:from-orange-400/35 hover:via-orange-300/20">
+        <div className="flex items-center gap-4 rounded-2xl bg-gray-900/90 p-4 border border-gray-800/70 backdrop-blur-sm transition-all duration-300 hover:border-orange-500/30 hover:bg-gray-900">
+          Class Info
+        </div>
+      </div>
+    </div>
+  );
+};
+
+export default Schedule;
+
+// components/testimonials.tsx
+import React from 'react';
+import { Quote } from 'icons';
+import { Avatar } from 'antd';
+
+const Testimonials = () => {
+  return (
+    <div>
+      {/* Quote icon and avatar ring */}
+      <Quote className="h-8 w-8 text-orange-400" />
+      <Avatar className="h-12 w-12 border-2 border-orange-400/80">
+        Avatar
+      </Avatar>
+    </div>
+  );
+};
+
+export default Testimonials;
+
+// components/cta.tsx
+import React from 'react';
+import { Button } from 'antd';
+import { ShieldCheck } from 'icons';
+
+const CTA = () => {
+  return (
+    <div>
+      {/* Badge/pill colors */}
+      <div className="border-orange-500/30 bg-orange-400/10 text-orange-300">
+        Badge
+      </div>
+      {/* Title gradient */}
+      <h2 className="bg-gradient-to-r from-orange-400 to-amber-400">
+        Title
+      </h2>
+      {/* Inputs focus ring */}
+      <input className="focus:ring-orange-400" />
+      {/* Submit button */}
+      <Button className="bg-orange-400 text-gray-950 font-bold hover:bg-orange-500">
+        Submit
+      </Button>
+      {/* Success toast color */}
+      <div className="bg-orange-500 text-white">
+        Success Toast
+      </div>
+      {/* ShieldCheck icon */}
+      <ShieldCheck className="text-orange-400" />
+    </div>
+  );
+};
+
+export default CTA;
+
+// components/footer.tsx
+import React from 'react';
+import { Dumbbell } from 'icons';
+
+const Footer = () => {
+  return (
+    <div>
+      {/* Brand icon and social hover */}
+      <Dumbbell className="h-6 w-6 text-orange-400" />
+      <div className="text-gray-400 hover:text-orange-400">
+        Social Links
+      </div>
+    </div>
+  );
+};
+
+export default Footer;
