@@ -5,16 +5,17 @@ const services = [
     title: "Zona de Pesas Completa",
     description: "Equipamiento de vanguardia para que lleves tu entrenamiento de fuerza al siguiente nivel.",
     image: "/weight-zone.jpg",
+    isNew: true, // Add this line
   },
   {
     title: "Entrenadores Personales",
     description: "Nuestros coaches certificados diseñarán un plan a tu medida para que alcances tus objetivos.",
-    image: "/personal-trainer-client.png",
+    image: "/personal-trainer-session.jpg",
   },
   {
     title: "Clases Grupales Dinámicas",
     description: "Desde Yoga hasta HIIT, encuentra la clase perfecta para ti y entrena con la mejor energía.",
-    image: "/group-fitness-class.png",
+    image: "/group-fitness-dynamic.jpg",
   },
   {
     title: "Área de Cardio",
@@ -53,7 +54,14 @@ export default function Services() {
                 />
               </div>
               <div className="p-5">
-                <h3 className="text-xl font-bold text-white">{service.title}</h3>
+                <div className="flex items-center gap-3">
+                  <h3 className="text-xl font-bold text-white">{service.title}</h3>
+                  {service.isNew && (
+                    <span className="inline-flex items-center rounded-md bg-orange-400/10 px-2 py-1 text-xs font-medium text-orange-300 ring-1 ring-inset ring-orange-400/20">
+                      Nuevo
+                    </span>
+                  )}
+                </div>
                 <p className="mt-2 text-gray-300 text-sm leading-relaxed">{service.description}</p>
               </div>
             </div>
