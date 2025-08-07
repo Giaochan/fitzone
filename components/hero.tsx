@@ -4,27 +4,26 @@ export default function Hero() {
   return (
     <section>
       {/* --- Hero para Móviles --- */}
-      <div className="bg-gray-950 md:hidden">
-        <div className="container mx-auto px-4 py-12 sm:py-16">
-          <div className="rounded-2xl overflow-hidden shadow-lg shadow-black/30">
-            <img
-              src="/hero-battle-ropes.jpg"
-              alt="Entrenamiento en FitZone"
-              className="w-full h-64 object-cover"
-            />
-          </div>
-          <div className="text-center mt-10">
-            <h1 className="text-4xl font-extrabold tracking-tighter text-white sm:text-5xl">
-              Transforma tu cuerpo en <span className="text-orange-400">FitZone</span>
-            </h1>
-            <p className="mt-4 text-lg text-gray-300 max-w-md mx-auto">
-              Alcanza tus metas con entrenadores expertos y un ambiente que te motiva a superarte.
-            </p>
-            <div className="mt-8">
-              <Button size="lg" className="bg-orange-400 text-gray-950 font-bold hover:bg-orange-500">
-                ¡Obtén tu clase gratis!
-              </Button>
-            </div>
+      <div className="relative h-[85vh] flex items-center justify-center text-center md:hidden">
+        <div className="absolute inset-0">
+          <img
+            src="/hero-battle-ropes-new.jpg"
+            alt="Entrenamiento intenso en FitZone"
+            className="w-full h-full object-cover"
+          />
+          <div className="absolute inset-0 bg-black/60" />
+        </div>
+        <div className="relative z-10 container mx-auto px-4">
+          <h1 className="text-4xl font-extrabold tracking-tighter text-white sm:text-5xl">
+            Transforma tu cuerpo en <span className="text-orange-400">FitZone</span>
+          </h1>
+          <p className="mt-4 text-lg text-gray-200 max-w-md mx-auto">
+            Alcanza tus metas con entrenadores expertos y un ambiente que te motiva a superarte.
+          </p>
+          <div className="mt-8">
+            <Button size="lg" className="bg-orange-400 text-gray-950 font-bold hover:bg-orange-500">
+              ¡Obtén tu clase gratis!
+            </Button>
           </div>
         </div>
       </div>
