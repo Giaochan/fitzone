@@ -101,12 +101,12 @@ export default function Schedule() {
         </div>
 
         <Tabs defaultValue={days[0]} className="w-full">
-          <TabsList className="w-full max-w-full flex flex-wrap items-center justify-center gap-1 bg-gray-900/50 border border-gray-800 rounded-lg p-1.5">
+          <TabsList className="w-full max-w-full flex flex-wrap items-center justify-center gap-2 bg-gray-900/50 border border-gray-800 rounded-lg p-2">
             {days.map((day) => (
               <TabsTrigger
                 key={day}
                 value={day}
-                className="flex-1 min-w-0 px-2 py-1.5 text-xs sm:text-sm font-medium text-gray-300 rounded-md data-[state=active]:bg-orange-400 data-[state=active]:text-gray-950"
+                className="flex-grow px-3 py-1.5 text-xs sm:text-sm font-medium text-gray-300 rounded-md data-[state=active]:bg-orange-400 data-[state=active]:text-gray-950"
               >
                 {day}
               </TabsTrigger>
