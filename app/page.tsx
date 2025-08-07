@@ -8,9 +8,9 @@ import Footer from "@/components/footer";
 
 export default function FitZoneLandingPage() {
   return (
-    <div className="bg-gray-950 text-white min-h-screen font-sans">
+    <div className="flex flex-col min-h-screen">
       <Header />
-      <main>
+      <main className="flex-grow">
         <Hero />
         <Services />
         <Schedule />
